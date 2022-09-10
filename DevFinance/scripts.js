@@ -191,4 +191,5 @@ const App = {
   },
 };
 
+alert("Fala Professor, se tá bem? Então, ando meio sobrecarregado com o trampo e atividades de outras materias, ai meu trabalho n ficou mt bom não, mas até o final do semestre eu volto pra dar uma corrigida nele e deixar bunitin. Desculpa aí, mas tá complicado :)")
 App.init();
