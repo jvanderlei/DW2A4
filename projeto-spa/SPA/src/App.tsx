@@ -1,21 +1,27 @@
 import { useState } from "react";
+import { Pomodoro } from "./components/Pomodoro";
+import { Settings } from "./components/Timer/Settings";
+import { SettingsContext } from "./components/Timer/SettingsContext";
+import { Widget } from "./components/Widget";
 
-interface ButtonProps {
-  text?: string;
-}
+export function App() {
+  const [showSettings, setShowSettings] = useState(false);
+  const [workMinutes, setWorkMinutes] = useState(50);
+  const [breakMinutes, setBreakMinutes] = useState(10);
 
-function Button(props: ButtonProps) {
-  return <button>{props.text ?? "Default"}</button>;
-}
-
-function App() {
   return (
-    <div>
-      <Button text="Enviar" />
-      <Button text="Ok" />
-      <Button />
-    </div>
+    <>
+      <SettingsContext.Provider
+        value={{
+          workMinutes,
+          breakMinutes,
+          setWorkMinutes,
+          setBreakMinutes,
+        }}
+      >
+        {showSettings ? <Settings setShowSettings={setShowSettings} /> : <Pomodoro setShowSettings={setShowSettings}/>}
+      </SettingsContext.Provider>
+      <Widget />
+    </>
   );
 }
-
-export default App;
